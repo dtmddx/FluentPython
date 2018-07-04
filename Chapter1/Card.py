@@ -1,19 +1,16 @@
 # Chapter 1
 
-"""
-One of the best qualities of Python is its consistency. After working with Python for a while, you are able to start
-making informed, correct guesses about features that are new to you
-"""
-
 import collections
 
 Card = collections.namedtuple("Card", ['rank', 'suit'])
 
 
 class FrenchDeck:
-    ranks = [str(n) for n in range(2, 11)] + list("JDKA")
+    ranks = [str(n) for n in range(2, 11)] + list("JDKA") # the type of ranks is list.
+    print("type of ranks: ", type(ranks))
     print("ranks: ", ranks)
-    suits = "spades diamonds clubs hearts".split()
+    suits = "spades diamonds clubs hearts".split() # the type of suits is list.
+    print("the type of suits is: ", type(suits))
     print("suits: ", suits)
 
     def __init__(self):
@@ -23,7 +20,9 @@ class FrenchDeck:
         return len(self._cards)
 
     def __getitem__(self, position):
+        print("here in __getitem__")
         return self._cards[position]
+
 
 
 '''The first thing to note is the use of collections.namedtuple to construct a simple class to represent individual 
@@ -37,15 +36,18 @@ print("beer_card length: ", beer_card.__len__())
 print(beer_card)
 
 
+deck = FrenchDeck()
 
-coordinate = collections.namedtuple("Coo", ["x", "y", "z"])
-c1 = coordinate(1, 2, 3)
+
+
+my_coordinate = collections.namedtuple("Coo", ["x", "y", "z"])
+c1 = my_coordinate(1, 2, 3)
 print("c1:", c1)
 
 print("c1.x:", c1.x)
 print("c1[0]: ", c1[0])
 
-c2 = coordinate._make([100, 200, 300])
+c2 = my_coordinate._make([100, 200, 300])
 print("c2: ", c2)
 print("c2.x: ", c2.x)
 
@@ -53,5 +55,4 @@ c2 = c2._replace(x = 300)
 print("c2: ", c2)
 
 
-deck = FrenchDeck()
 
